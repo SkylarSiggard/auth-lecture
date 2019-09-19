@@ -9,17 +9,17 @@ const app = express()
 
 app.use(express.json())
 app.use(session({
-    resave: false,
-    saveUninitialized: false,
-    secret: SESSION_SECRET
+  resave: false,
+  saveUninitialized: false,
+  secret: SESSION_SECRET
 }))
-// end points
+
+// ENDPOINTS!
 app.post('/auth/register', authCtrl.register)
-app.post('/auth/login', authCtrl.lgoin)
+app.post('/auth/login', authCtrl.login)
 app.delete('/auth/logout', authCtrl.logout)
 
-
 massive(CONNECTION_STRING).then(db => {
-    app.set('db', db) 
-    app.listen(SERVER_PORT, () => console.log(`Port is running on: ${SERVER_PORT}`))
+  app.set('db', db)
+  app.listen(SERVER_PORT, () => console.log(`Jonathan's a big dummy. Port ${SERVER_PORT}`))
 })
